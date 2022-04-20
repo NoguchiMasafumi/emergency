@@ -1,0 +1,147 @@
+
+
+
+<body style="background-color:rgb(0, 22, 5)">
+
+<style>
+
+
+/*  https://b-moon.net/characters-circle-rotated-3d/  */
+/*  https://1-notes.com/javascript-rotate-animation-with-animate/ */
+/*  https://sugulog.hatenadiary.jp/entry/2021/01/17/214302  */
+
+
+/* 点滅 */
+.blinking{
+	-webkit-animation:blink 0.1s ease-in-out 9 alternate;
+    -moz-animation:blink 0.1s ease-in-out 9 alternate;
+    animation:blink 0.1s ease-in-out 9 alternate;
+}
+.blinking_2{
+	-webkit-animation:blink 1s ease-in-out infinite alternate;
+    -moz-animation:blink 1s ease-in-out infinite alternate;
+    animation:blink 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+.base_img{
+    width:400px;
+    height:400px;
+}
+.fnt_s48{font-size:48px;}
+.fnt_s40{font-size:40px;}
+.fnt_s36{font-size:36px;}
+.fnt_s32{font-size:32px;}
+.fnt_s24{font-size:24px;}
+.fnt_s20{font-size:20px;}
+.fnt_s18{font-size:18px;}
+.fnt_s14{font-size:14px;}
+.fnt_s12{font-size:12px;}
+.fnt_s10{font-size:10px;}
+
+
+
+/**************************************************/
+.circle {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-60px);
+}
+
+.inner {
+    transform-style: preserve-3d;
+    transform:rotateX(-90.1deg) rotateZ(120deg);
+}
+
+.text {
+    margin: 0;
+    transform-style: preserve-3d;
+    animation: rotateAnim linear infinite;
+    animation-duration: 10s;
+}
+
+@keyframes rotateAnim {
+    0% { transform: rotate(360deg); }
+    50%{ transform: rotate(180deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.span_1 {
+    top:100px;
+    position: absolute;
+    inset: 0;
+    font-weight: 700;
+    opacity: 0;
+    animation: opacityAnim 10s linear infinite;
+}
+
+@keyframes opacityAnim {
+    0%, 50%, 100% { opacity: 0.2; }
+    25% { opacity: 1; }
+    75%{ opacity: 0; }
+}
+
+</style>
+
+
+    <div id="app" style="color:rgb(255,255,255)">
+        <input type="range" id="speed" min="0" max="10000" value="0" style="margin-bottom:100px;width:700px;">
+
+        <div class="circle">
+            <div class="inner">
+                <p class="text" id="txt_1">|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;</p>
+            </div>
+        </div>
+        
+
+        <div>
+            <div v-if="currentTurn"></div>
+
+            <div v-if="int_speed==0" style="font-family:'FixedSys';width:150px;text-align:center;" class="blinking_2">
+                <span class="fnt_s24">STAND BY</span><br />
+                <span class="fnt_s10">MOVE GAUGE TO RIGHT</span>
+            </div>
+            <div v-else style="font-family:'FixedSys';font-size:48px;width:150px;text-align: right;">{{Math.floor(int_speed*100)}}</div>
+
+
+
+            <div v-if="int_speed>81" style="position:absolute;" class="blinking"><img src="img/unlock_safety.png" class="base_img"></div>        
+            <div v-if="int_speed>81" style="position:absolute;" class="blinking_2"><img src="img/unlock_safety_txt.png" class="base_img"></div>        
+
+            <div v-for="(sss,index) in dat" style="position:absolute;">
+
+                <!--div v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" style="border:1px solid #efefef;"><img src="img/lgt.png">></div-->        
+
+                <div v-if="index<80" v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" ><img src="img/lgt.png" class="base_img"></div>        
+                <div v-else v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" ><img src="img/lgt_attn.png" class="base_img"></div>        
+            
+            </div>
+        </div>
+
+
+
+        
+
+</div>
+
+
+
+
+
+    <script src="../js/vue.min.js"></script>
+    <script type="module" src="js/center.js"></script>
+</body>

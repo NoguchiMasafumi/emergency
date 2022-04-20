@@ -1,0 +1,99 @@
+<head>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <style>
+
+.circle {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-60px);
+    }
+
+    .inner {
+    transform-style: preserve-3d;
+    transform:rotateX(-90.1deg) rotateZ(120deg);
+    }
+
+    .text {
+    margin: 0;
+    transform-style: preserve-3d;
+    animation: rotateAnim linear infinite;
+    animation-duration: 10s;
+    }
+
+    @keyframes rotateAnim {
+    0% { transform: rotate(360deg); }
+    50%{ transform: rotate(180deg); }
+    100% { transform: rotate(0deg); }
+    }
+
+    span {
+    position: absolute;
+    inset: 0;
+    font-weight: 700;
+    opacity: 0;
+    animation: opacityAnim 10s linear infinite;
+    }
+
+    @keyframes opacityAnim {
+    0%, 50%, 100% { opacity: 0.2; }
+    25% { opacity: 1; }
+    75%{ opacity: 0; }
+    }
+    </style>
+
+
+
+    <script>
+        jQuery(function($) {
+        const before = $('.text');
+        const text = before.text();
+        const textArray = text.split('');
+        
+        let after = '';
+        $.each(textArray,function(index,val){
+            after += "<span>" + val + "</span>";
+        });  
+        
+        before.html(after);
+        
+
+
+        const textcnt = textArray.length;
+        const circleR = ($('.circle').height()) / 2;
+        const fontH = ($('.inner').height());
+        const dist = circleR - fontH;
+        const animTime = $('.text').css('animation-duration').slice(0, -1);
+        console.log(animTime)
+        $('span').each(function(index) {
+            const num = index + 1;
+            const radX = Math.sin(360 / textcnt * num * (Math.PI / 180));
+            const radY = Math.sin((90 - (360 / textcnt * num)) * (Math.PI / 180));
+            $(this).css({'transform': 'translate(' + dist * radX + 'px, ' + -(dist * radY) + 'px) rotateX(90deg) rotateY(' + 360 / textcnt * num + 'deg)',
+                        'animation-delay': animTime / textcnt * num + 's',
+            });
+        });
+        });
+    </script>
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+  <div class="circle">
+    <div class="inner">
+      <p class="text" id="txt_1">|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;</p>
+    </div>
+  </div>
+</body>
