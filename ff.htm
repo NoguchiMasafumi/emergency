@@ -1,21 +1,25 @@
 <style>
 
 .dd{
-	background:repeating-linear-gradient(45deg, rgb(20, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
+	background:repeating-linear-gradient(45deg, rgb(109, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
 }
-.dd2{
-	background:repeating-linear-gradient(135deg, rgb(20, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
-}
+
 .blinking{
     animation:blink 1s ease-in-out infinite alternate;
 }
+.back1{
+    background-color: rgb(0,3,3);
+
+}
+.fnt_alt{font-size:48px;color:rgb(109, 0, 0);font-weight:bold;font-family: 'Fixed-sys';}
 @keyframes blink{
     0% {opacity:0;}
     100% {opacity:1;}
 }
 </style>
 
-
-<div class="dd blinking">fffddddddddddddddddddddff</div>
-<div class="blinking">ALERT</div>
-<div class="dd blinking">fffddddddddddddddddddddff</div>
+<body class="back1">
+<div class="dd blinking">&nbsp;</div>
+<div class="blinking fnt_alt">ALERT</div>
+<div class="dd blinking">&nbsp;</div>
+</body>
