@@ -1,0 +1,21 @@
+<style>
+
+.dd{
+	background:repeating-linear-gradient(45deg, rgb(20, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
+}
+.dd2{
+	background:repeating-linear-gradient(135deg, rgb(20, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
+}
+.blinking{
+    animation:blink 1s ease-in-out infinite alternate;
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+</style>
+
+
+<div class="dd blinking">fffddddddddddddddddddddff</div>
+<div class="blinking">ALERT</div>
+<div class="dd blinking">fffddddddddddddddddddddff</div>
