@@ -3,7 +3,9 @@
 .dd{
 	background:repeating-linear-gradient(45deg, rgb(109, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
 }
-
+.dd2{
+	background:repeating-linear-gradient(135deg, rgb(109, 0, 0) 0 1%, rgba(255, 255, 255, 0) 1% 2%);
+}
 .blinking{
     animation:blink 1s ease-in-out infinite alternate;
 }
@@ -11,7 +13,14 @@
     background-color: rgb(0,3,3);
 
 }
-.fnt_alt{font-size:48px;color:rgb(109, 0, 0);font-weight:bold;font-family: 'Fixed-sys';}
+.flt_lef{float:left;}
+.over_flow_hid{overflow:hidden;}
+.w50p{width:50%;}
+
+
+.mir1{transform: scale(-1, 1);}
+
+.fnt_alt{font-size:48px;color:rgb(109, 0, 0);font-weight:bold;font-family: 'FixedSys';}
 @keyframes blink{
     0% {opacity:0;}
     100% {opacity:1;}
@@ -19,7 +28,20 @@
 </style>
 
 <body class="back1">
-<div class="dd blinking">&nbsp;</div>
+
+<div class="over_flow_hid">
+    <div class="dd blinking w50p flt_lef">&nbsp;</div>
+    <div class="dd mir1 blinking w50p flt_lef">&nbsp;</div>
+</div>
+
 <div class="blinking fnt_alt">ALERT</div>
-<div class="dd blinking">&nbsp;</div>
+
+
+<div class="over_flow_hid">
+    <div class="dd blinking w50p flt_lef">&nbsp;</div>
+    <div class="dd mir1 blinking w50p flt_lef">&nbsp;</div>
+</div>
+
+
+
 </body>
