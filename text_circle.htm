@@ -1,0 +1,122 @@
+
+
+
+
+
+<style>
+.circle-text{
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  position:relative;
+  margin:0px;
+  animation:36s linear infinite rotation1;
+  transform:scaleX(-1);
+  /*text-shadow:0px 0px 1px rgb(32, 32, 32);*/
+  text-shadow:0 0 3px rgb(255, 255, 255),
+  0 0 3px rgb(255, 255, 255),
+  0 0 3px rgb(255, 255, 255);
+
+
+
+
+
+  font-weight:bold;
+}
+
+
+.pos_abs{position:absolute;}
+
+.rel_box{
+    position:relative;
+    width:500px;
+    height:500px;
+}
+
+.sample_1 {
+  z-index: 4;
+  position:absolute;
+  top:0; bottom:0; left:0; right:0;
+  width: 440px;
+  height: 440px;
+  border-radius: 100%;
+  margin:auto;
+    opacity:0.9;
+    box-shadow: 0 0 60px 0 rgb(255, 187, 0);
+  background: radial-gradient(rgb(163, 125, 0), rgb(255, 225, 127));
+}
+
+
+.zi_100{z-index: 100;}
+.zi_200{z-index: 200;}
+.zi_300{z-index: 300;}
+.zi_400{z-index: 400;}
+.zi_500{z-index: 500;}
+
+
+
+@keyframes rotation1{
+  0%{ transform:rotate(0);}
+  100%{ transform:rotate(360deg); }
+}
+
+body{
+    background-color:rgb(18, 19, 18)
+}
+</style>
+
+
+
+
+<body>
+    <div class="pos_abs zi_500">
+        <div class="circle-text">fdsanlnfklsadflksadfsdgsd23142365645765  65475856  7657654754  67547647456:Fe4343</div>
+    </div>
+
+
+    <div class="pos_abs zi_100">
+        <div class="rel_box">
+            <div class="sample_1"></div></div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+var textbox = document.querySelector('.circle-text');
+
+circleText(textbox,3);
+
+function circleText (textElement,angle) {
+  var parentR = textbox.offsetWidth/2;
+  var text = textElement.textContent;  
+  var chars = text.split('');
+  if(chars.length%2 === 0){
+    chars.splice(chars.length/2,0,' ');
+  }
+  textElement.innerHTML = null;
+
+  chars.forEach(function (c, i, arr) {
+    var span = document.createElement('span');
+    span.textContent = c;
+    span.style.display   = 'inline-block';
+    span.style.position  = 'absolute';
+    span.style.left = '50%';
+    span.style.top = '50%';
+
+    span.style.transformOrigin = 'left top';
+    span.style.transform = 
+        'scaleX(-1) '+
+      'rotate(' + (i*angle-angle*((arr.length/2)>>0)) + 'deg) ' +
+      'translate(0%,40%) ' + 
+      'translate(0, -' + (parentR) + 'px) ' +
+      'translate(-50%,-50%)';
+    textElement.appendChild(span);
+  });
+}
+
+</script>
+
+
