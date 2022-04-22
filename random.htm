@@ -1,0 +1,39 @@
+<script>
+let str_let1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let int_loop2=0
+let int_loop3=0
+let sss=''
+let ppp=''
+let ar_ft=new Array('FROM:','-TO:')
+ 
+
+for(int_loop1=0;int_loop1<3;int_loop1++){
+    if(int_loop1>0){
+        sss=sss+"        "
+    }
+
+
+    for(int_loop2=0;int_loop2<ar_ft.length;int_loop2++){
+        sss=sss+ar_ft[int_loop2]
+        for(int_loop3=0;int_loop3<4;int_loop3++){
+            var random1 = Math.floor( Math.random() * 255 );
+            random1=("000"+random1).slice(-3)
+            if(int_loop3>0){sss=sss+"."+random1}else{sss=sss+random1}
+        }
+    }
+    sss=sss+" "
+    for(int_loop2=0;int_loop2<2;int_loop2++){
+        sss=sss+str_let1[~~(Math.random() * str_let1.length)]
+    }
+
+    sss=sss+":#"
+    for(int_loop2=0;int_loop2<8;int_loop2++){
+            var ccd = Math.floor( Math.random() * 9 );
+            if(int_loop3>0){sss=sss+ccd}else{sss=sss+ccd}
+        }
+}
+console.log(sss)
+
+
+
+</script>
