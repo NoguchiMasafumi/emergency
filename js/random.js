@@ -61,7 +61,7 @@ var value = new Vue({
             let int_loop1=0
             for(int_loop1=0;int_loop1<this.ar_txt.length;int_loop1++){
                 let sss=''
-                for(int_loop2=0;int_loop2<8;int_loop2++){
+                for(int_loop2=0;int_loop2<6;int_loop2++){
                     var ccd = Math.floor( Math.random() * 9 );
                     if(int_loop3>0){sss=sss+ccd}else{sss=sss+ccd}
                 }

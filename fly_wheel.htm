@@ -1,0 +1,73 @@
+<style>
+    .w500{width:524px;}
+    .h50{height:50px;}
+
+    .bor_1{border:1px solid #000000;}
+
+
+
+    .spn1{position: absolute;}
+    .anim{animation:rot1 3s ease-in-out running infinite;}
+    .anim_r{animation:rot2 3s ease-in-out running infinite;}
+    .del1{animation-delay:calc(3s/5*1);}
+    .del2{animation-delay:calc(3s/5*2);}
+    .del3{animation-delay:calc(3s/5*3);}
+    .del4{animation-delay:calc(3s/5*4);}
+    .del5{animation-delay:calc(3s/5*5);}
+    @keyframes rot1{
+        0% {
+            transform: translateX(500px);
+            opacity:0.2;
+        }
+        50%{opacity:1;
+            font-size:120%;
+        }
+        100% {
+            transform: translateX(0px);
+            opacity:0.2;
+        }
+    }
+    @keyframes rot2{
+        0% {
+            transform: translateX(0px);
+            opacity:0.2;
+        }
+        50%{opacity:0.1;font-size:90%;}
+        100% {
+            transform: translateX(500px);
+            opacity:0.2;
+        }
+    }
+
+
+
+
+
+</style>
+
+<input type="range" id="speed" min="0" max="10000" value="0" style="margin-bottom:100px;width:700px;">
+
+<div id="app" class="w500 h50">
+
+    <div v-if="currentTurn"></div>
+    <div>{{int_speed}} {{rpm}}</div>
+
+
+    <span class="spn1 anim del5">|</span>
+    <span class="spn1 anim del4">|</span>
+    <span class="spn1 anim del3">|</span>
+    <span class="spn1 anim del2">|</span>
+    <span class="spn1 anim del1">|</span>
+
+    <span class="spn1 anim_r del5">|</span>
+    <span class="spn1 anim_r del4">|</span>
+    <span class="spn1 anim_r del3">|</span>
+    <span class="spn1 anim_r del2">|</span>
+    <span class="spn1 anim_r del1">|</span>
+
+
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script type="module" src="js/fly_wheel.js"></script>

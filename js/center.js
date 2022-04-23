@@ -69,51 +69,33 @@ var value = new Vue({
 
 
         view_control:function(){
+            this.int_speed=document.getElementById("speed").value/100
 
 
-           //console.log(this.int_speed*100)
+            //console.log(this.int_speed)
             if(this.int_speed>0){
-                //***************************** /fly wheel *****************************
-                this.obj_1.innerHTML=this.aft1
-
-
-
-                this.animTime=(60/(this.int_speed)).toFixed(2)
-                
-                let nm_1=0
-                let radX=0
-                let radY=0
-                let txtcnt_2=this.textcnt
-                let dist_2=this.circleR - this.fontH
-                let anitime_2=this.animTime
-
-                //console.log(this.int_speed +" "+anitime_2)
-                this.remove_span_1()
-                this.add_span_1()
-
-                var elems=app.querySelectorAll(".span_1")
-
-
-
-                let int_loop2=0
-                for(int_loop2;int_loop2<elems.length;int_loop2++){
-                    nm_1 = int_loop2+1
-
-                    //console.log(elems[int_loop2].style.transformOrigin)
-
-                    radX = Math.sin(360 / txtcnt_2 * nm_1 * (Math.PI / 180))
-                    radY = Math.sin((90 - (360 / txtcnt_2 * nm_1)) * (Math.PI / 180))
-
-
-                    elems[int_loop2].style.transform='translate(' + dist_2 * radX + 'px, ' + -(dist_2 * radY) + 'px) rotateX(90deg) rotateY(' + 360 / txtcnt_2 * nm_1 + 'deg)'
-                    elems[int_loop2].style.animationDelay = anitime_2 / txtcnt_2 * nm_1 + 's'
-                    elems[int_loop2].style.animationDuration = anitime_2+ 's'
-                }
-
-                /*app.querySelectorAll(".text")[0].style.animationDuration=anitime_2+'s'*/
-                //***************************** /fly wheel *****************************
-                document.getElementById("txt_1").style.animationDuration=anitime_2+'s'
     
+            //************************ fly wheel ********************************** */
+            let intsp=this.int_speed
+            this.rpm=60/(intsp)
+            let elem1 = document.getElementsByClassName("anim");
+            Array.prototype.forEach.call(elem1, function (element) {
+                element.style.animationDuration=  60/(intsp)+'s'
+            });
+            let elem2 = document.getElementsByClassName("anim_r");
+            Array.prototype.forEach.call(elem2, function (element) {
+                element.style.animationDuration=  60/(intsp)+'s'
+            });
+            let ar_del=new Array('del1','del2','del3','del4','del5')
+            let int_loop1=0
+            for(int_loop1=0;int_loop1<ar_del.length;int_loop1++){
+                let elem1 = document.getElementsByClassName(ar_del[int_loop1]);
+                Array.prototype.forEach.call(elem1, function (element) {
+                    element.style.animationDelay=  (60/(intsp)/5)*int_loop1+'s'
+                });
+            }
+            //************************ fly wheel ********************************** */
+
     
             }
 
@@ -152,27 +134,6 @@ var value = new Vue({
 
             if(this.exec1==0){
 
-                //***************************** /fly wheel *****************************
-                this.obj_1=document.getElementById('txt_1')
-                this.str_txt_1=this.obj_1.innerText
-                this.ar_txt_1=this.str_txt_1.split("")
-                let after = '';
-                this.ar_txt_1.forEach(function(val,index,ar){
-                    after += "<span class='span_1 span_2'>" + val + "</span>";
-                });
-                this.aft1=after
-                this.textcnt = this.ar_txt_1.length
-                let rect_1=document.getElementsByClassName("circle")[0].getBoundingClientRect()
-                this.circleR = (rect_1.width) / 2
-                let rect_2=document.getElementsByClassName("inner")[0].getBoundingClientRect()
-                this.fontH = rect_2.height
-                this.dist = this.circleR - this.fontH
-    
-                //let elem_1=document.getElementsByClassName("text")[0]
-                //let hhh=window.getComputedStyle(elem_1)
-                //let shhh=hhh.getPropertyValue('animation-duration')
-                //this.animTime = shhh.slice(0, -1);
-                //***************************** /fly wheel *****************************
     
 
 

@@ -6,141 +6,189 @@
 <style>
 
 
-/*  https://b-moon.net/characters-circle-rotated-3d/  */
-/*  https://1-notes.com/javascript-rotate-animation-with-animate/ */
-/*  https://sugulog.hatenadiary.jp/entry/2021/01/17/214302  */
-/*  https://ics.media/entry/220420/ */
+    /*  https://b-moon.net/characters-circle-rotated-3d/  */
+    /*  https://1-notes.com/javascript-rotate-animation-with-animate/ */
+    /*  https://sugulog.hatenadiary.jp/entry/2021/01/17/214302  */
+    /*  https://ics.media/entry/220420/ */
 
-/* 点滅 */
-.blinking{
-	-webkit-animation:blink 0.1s ease-in-out 9 alternate;
-    -moz-animation:blink 0.1s ease-in-out 9 alternate;
-    animation:blink 0.1s ease-in-out 9 alternate;
-}
-.blinking_2{
-	-webkit-animation:blink 1s ease-in-out infinite alternate;
-    -moz-animation:blink 1s ease-in-out infinite alternate;
-    animation:blink 1s ease-in-out infinite alternate;
-}
-@-webkit-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-@-moz-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-@keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-.base_img{
-    width:400px;
-    height:400px;
-}
-.fnt_s48{font-size:48px;}
-.fnt_s40{font-size:40px;}
-.fnt_s36{font-size:36px;}
-.fnt_s32{font-size:32px;}
-.fnt_s24{font-size:24px;}
-.fnt_s20{font-size:20px;}
-.fnt_s18{font-size:18px;}
-.fnt_s14{font-size:14px;}
-.fnt_s12{font-size:12px;}
-.fnt_s10{font-size:10px;}
+    /* 点滅 */
+    .blinking{
+        -webkit-animation:blink 0.1s ease-in-out 9 alternate;
+        -moz-animation:blink 0.1s ease-in-out 9 alternate;
+        animation:blink 0.1s ease-in-out 9 alternate;
+    }
+    .blinking_2{
+        -webkit-animation:blink 1s ease-in-out infinite alternate;
+        -moz-animation:blink 1s ease-in-out infinite alternate;
+        animation:blink 1s ease-in-out infinite alternate;
+    }
+    @-webkit-keyframes blink{
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+    @-moz-keyframes blink{
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+    @keyframes blink{
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+
+    .w600{width:600px;}
+
+    .w500{width:500px;}
+
+    .w300{width:300px;}
+
+    .h600{height:600px;}
+    .h50{height:50px;}
+
+    .fnt_s48{font-size:48px;}
+    .fnt_s40{font-size:40px;}
+    .fnt_s36{font-size:36px;}
+    .fnt_s32{font-size:32px;}
+    .fnt_s24{font-size:24px;}
+    .fnt_s20{font-size:20px;}
+    .fnt_s18{font-size:18px;}
+    .fnt_s14{font-size:14px;}
+    .fnt_s12{font-size:12px;}
+    .fnt_s10{font-size:10px;}
+
+    .bor_1{border:1px solid;}
+    .bor_c00{border-color:rgb(255,255,255)}
+    .bor_c17{border-color:rgba(255, 39, 39, 0.6)}
+
+    .cnct_mar1{margin:0px 5px 3px 5px;}
+    .cnct_mar2{margin:0px 5px 0px 5px;}
+
+
+    .base_img{
+        width:400px;
+        height:400px;
+    }
 
 
 
-/**************************************************/
-.circle {
-    margin: 0 auto;
-    width: 300px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-60px);
-}
+    /**************************************************/
+    .circle1 {margin-bottom:20px;
+    }
 
-.inner {
-    transform-style: preserve-3d;
-    transform:rotateX(-90.1deg) rotateZ(120deg);
-}
 
-.text {
-    margin: 0;
-    transform-style: preserve-3d;
-    animation: rotateAnim linear infinite;
-    animation-duration: 10s;
-}
 
-@keyframes rotateAnim {
-    0% { transform: rotate(360deg); }
-    50%{ transform: rotate(180deg); }
-    100% { transform: rotate(0deg); }
-}
 
-.span_1 {
-    top:100px;
-    position: absolute;
-    inset: 0;
-    font-weight: 700;
-    opacity: 0;
-    animation: opacityAnim linear infinite;
-}
 
-@keyframes opacityAnim {
+    .spn1{position: absolute;}
+    .anim{animation:rot1 0s ease-in-out running infinite;}
+    .anim_r{animation:rot2 0s ease-in-out running infinite;}
+    .del1{animation-delay:calc(3s/5*1);}
+    .del2{animation-delay:calc(3s/5*2);}
+    .del3{animation-delay:calc(3s/5*3);}
+    .del4{animation-delay:calc(3s/5*4);}
+    .del5{animation-delay:calc(3s/5*5);}
+    @keyframes rot1{
+        0% {
+            transform: translateX(500px);
+            opacity:0.5;
+        }
+        50%{opacity:1;
+            font-size:120%;
+        }
+        100% {
+            transform: translateX(0px);
+            opacity:0.5;
+        }
+    }
+    @keyframes rot2{
+        0% {
+            transform: translateX(0px);
+            opacity:0.5;
+        }
+        50%{opacity:0.3;font-size:90%;}
+        100% {
+            transform: translateX(500px);
+            opacity:0.5;
+        }
+    }
 
-    0% {opacity: 0.2;}
-    25% { opacity: 1; }
-    50%{opacity: 0.2;}
-    75% {opacity: 0;}
-    100% { opacity: 0.2; }
-    
-}
+    .over_flw_hid{
+        overflow: hidden;
+    }
 
+
+    .flt_lef{float:left;}
+    .box_rel{
+        position:relative;
+    }
 </style>
 
 
     <div id="app" style="color:rgb(255,255,255)">
-        <input type="range" id="speed" min="0" max="10000" value="0" style="margin-bottom:100px;width:700px;">
+        <input type="range" id="speed" min="0" max="10000" value="0" style="margin:60px 0px 20px 0px;width:700px;">
 
-        <div class="circle">
-            <div class="inner">
-                <p class="text" id="txt_1">|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;</p>
-            </div>
-        </div>
         
 
-        <div>
             <div v-if="currentTurn"></div>
 
-            <div v-if="int_speed==0" style="font-family:'FixedSys';width:150px;text-align:center;" class="blinking_2">
-                <span class="fnt_s24">STAND BY</span><br />
-                <span class="fnt_s10">MOVE GAUGE TO RIGHT</span>
+
+
+            <div class="circle1">
+                <div>FLY WHEEL STATUS</div>
+                <div>
+                    <span class="spn1 anim del5">|</span>
+                    <span class="spn1 anim del4">|</span>
+                    <span class="spn1 anim del3">|</span>
+                    <span class="spn1 anim del2">|</span>
+                    <span class="spn1 anim del1">|</span>
+                
+                    <span class="spn1 anim_r del5">|</span>
+                    <span class="spn1 anim_r del4">|</span>
+                    <span class="spn1 anim_r del3">|</span>
+                    <span class="spn1 anim_r del2">|</span>
+                    <span class="spn1 anim_r del1">|</span>
+                </div>
             </div>
-            <div v-else style="font-family:'FixedSys';font-size:48px;width:150px;text-align: right;">{{Math.floor(int_speed*100)}}</div>
+    
+
+            <div class="over_flw_hid">
+                <div class="flt_lef">
+                    <div v-if="int_speed==0" style="font-family:'FixedSys';width:150px;text-align:center;" class="blinking_2">
+                        <span class="fnt_s24">STAND BY</span><br />
+                        <span class="fnt_s10">MOVE GAUGE TO RIGHT</span>
+                    </div>
+                    <div v-else style="font-family:'FixedSys';font-size:48px;width:150px;text-align: right;">{{Math.floor(int_speed*100)}}</div>
 
 
 
-            <div v-if="int_speed>81" style="position:absolute;" class="blinking"><img src="img/unlock_safety.png" class="base_img"></div>        
-            <div v-if="int_speed>81" style="position:absolute;" class="blinking_2"><img src="img/unlock_safety_txt.png" class="base_img"></div>        
+                    <div class="over_flw_hid w600 h600">
+                        <div v-if="int_speed>81" style="position:absolute;" class="blinking"><img src="img/unlock_safety.png" class="base_img"></div>        
+                        <div v-if="int_speed>81" style="position:absolute;" class="blinking_2"><img src="img/unlock_safety_txt.png" class="base_img"></div>        
 
-            <div v-for="(sss,index) in dat" style="position:absolute;">
+                        <div v-for="(sss,index) in dat" style="position:absolute;">
+                            <!--div v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" style="border:1px solid #efefef;"><img src="img/lgt.png">></div-->        
+                            <div v-if="index<80" v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" ><img src="img/lgt.png" class="base_img"></div>        
+                            <div v-else v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" ><img src="img/lgt_attn.png" class="base_img"></div>        
+                        </div>
+                    </div>
 
-                <!--div v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" style="border:1px solid #efefef;"><img src="img/lgt.png">></div-->        
 
-                <div v-if="index<80" v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" ><img src="img/lgt.png" class="base_img"></div>        
-                <div v-else v-bind:style="{transform:'rotate('+ (index-20)*3+ 'deg)' }" ><img src="img/lgt_attn.png" class="base_img"></div>        
-            
+                </div>
+
+                <div class="flt_lef bor_1 bor_c00 w300">
+                    <div class="bor_1 bor_c17 cnct_mar1">STABLE</div>
+                    <div class="bor_1 bor_c17 cnct_mar1">STABLE</div>
+                    <div class="bor_1 bor_c17 cnct_mar1">STABLE</div>
+                    <div class="bor_1 bor_c17 cnct_mar2">STABLE</div>
+                </div>
+
+
             </div>
-        </div>
 
 
 
         
 
-</div>
+    </div>
 
 
 
