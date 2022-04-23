@@ -52,7 +52,6 @@ var value = new Vue({
 
                 void elems[int_loop2].offsetWidth;
             }
-            //alert("cf")
         },
         add_span_1:function(){
             var elems=app.querySelectorAll(".span_2")

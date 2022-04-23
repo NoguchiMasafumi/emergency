@@ -1,39 +1,126 @@
-<script>
-let str_let1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let int_loop2=0
-let int_loop3=0
-let sss=''
-let ppp=''
-let ar_ft=new Array('FROM:','-TO:')
- 
 
-for(int_loop1=0;int_loop1<3;int_loop1++){
-    if(int_loop1>0){
-        sss=sss+"        "
-    }
+<style>
 
 
-    for(int_loop2=0;int_loop2<ar_ft.length;int_loop2++){
-        sss=sss+ar_ft[int_loop2]
-        for(int_loop3=0;int_loop3<4;int_loop3++){
-            var random1 = Math.floor( Math.random() * 255 );
-            random1=("000"+random1).slice(-3)
-            if(int_loop3>0){sss=sss+"."+random1}else{sss=sss+random1}
-        }
-    }
-    sss=sss+" "
-    for(int_loop2=0;int_loop2<2;int_loop2++){
-        sss=sss+str_let1[~~(Math.random() * str_let1.length)]
-    }
 
-    sss=sss+":#"
-    for(int_loop2=0;int_loop2<8;int_loop2++){
-            var ccd = Math.floor( Math.random() * 9 );
-            if(int_loop3>0){sss=sss+ccd}else{sss=sss+ccd}
-        }
+.circle-text{
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  position:relative;
+  margin:0px;
+  animation:36s linear infinite rotation1;
+  transform:scaleX(-1);
+  /*text-shadow:0px 0px 1px rgb(32, 32, 32);*/
+  text-shadow:0 0 3px rgb(255, 255, 255),
+  0 0 3px rgb(255, 255, 255),
+  0 0 3px rgb(255, 255, 255);
+
+
+
+
+
+  font-weight:bold;
 }
-console.log(sss)
+
+
+.pos_abs{position:absolute;}
+
+.rel_box{
+    position:relative;
+    width:500px;
+    height:500px;
+}
+
+.sample_1 {
+  z-index: 4;
+  position:absolute;
+  top:0; bottom:0; left:0; right:0;
+  width: 440px;
+  height: 440px;
+  border-radius: 100%;
+  margin:auto;
+    opacity:0.9;
+    box-shadow: 0 0 60px 0 rgb(255, 187, 0);
+  background: radial-gradient(rgb(163, 125, 0), rgb(255, 225, 127));
+}
+
+
+.zi_100{z-index: 100;}
+.zi_200{z-index: 200;}
+.zi_300{z-index: 300;}
+.zi_400{z-index: 400;}
+.zi_500{z-index: 500;}
 
 
 
-</script>
+
+body{
+    background-color:rgb(18, 19, 18)
+}
+
+#app{
+    transform: rotateY(25deg) rotateX(45deg) scale(1,1);
+    width:500px;
+    height:500px;
+    transform-origin: 50% 50%;
+    margin: 50px 0px 0px 250px;
+}
+
+
+
+
+#rot{margin-top:300px;  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  position:relative;
+  margin:0px;
+  animation:36s linear infinite rotation1;
+  transform:scaleX(-1);
+  /*text-shadow:0px 0px 1px rgb(32, 32, 32);*/
+  text-shadow:0 0 3px rgb(255, 255, 255),
+  0 0 3px rgb(255, 255, 255),
+  0 0 3px rgb(255, 255, 255);
+
+
+
+
+
+  font-weight:bold;
+}
+
+@keyframes rotation1{
+0%{ transform:rotate(0);}
+100%{ transform:rotate(360deg); }
+}
+
+</style>
+
+
+<input type="range" id="speed" min="0" max="200" value="50" style="margin-bottom:100px;width:700px;">
+
+<div style="position:relative;height:500px;">
+<div id="app">
+    <div v-if="currentTurn"></div>
+    <div class="pos_abs zi_500">
+
+        <div id="rot">
+            FROM:{{dat[0].ip_from}}-TO:{{dat[0].ip_to}} {{dat[0].code_1}}:#{{dat[0].code_2}}
+        </div>
+    </div>
+    <div class="pos_abs zi_100">
+        <div class="rel_box">
+            <div class="sample_1"></div></div>
+        </div>
+    </div>
+    
+
+</div>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script type="module" src="js/random.js"></script>
